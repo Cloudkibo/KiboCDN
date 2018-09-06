@@ -1,0 +1,26 @@
+{
+  "name": "kibo-cdn",
+  "version": "1.0.0",
+  "description": "cdn for cloudkibo applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudKibo/KiboCDN.git"
+  },
+  "keywords": [
+    "CDN",
+    "KiboPush",
+    "KiboChat",
+    "CloudKibo",
+    "KiboEngage"
+  ],
+  "author": "Imran, Sojharo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CloudKibo/KiboCDN/issues"
+  },
+  "homepage": "https://github.com/CloudKibo/KiboCDN#readme"
+}
