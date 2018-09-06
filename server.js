@@ -37,7 +37,7 @@ http.createServer((req, res) => {
     if (err) {
       // if the file is not found, return 404
       res.statusCode = 404
-      res.end(`File ${pathname} not found!`)
+      res.end(`File ${req.url} not found!`)
       return
     }
     // if is a directory, then look for index.html
