@@ -2,7 +2,7 @@
   "name": "kibo-cdn",
   "version": "1.0.0",
   "description": "cdn for cloudkibo applications",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "test"
   },
