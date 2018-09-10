@@ -20,8 +20,7 @@ if (env === 'production') {
       cert: fs.readFileSync('/root/certs/kibocdn.crt')
     }
   } catch (e) {
-    console.log('Error in loading certs')
-    console.log(e)
+    // stub add code here for logger
   }
 }
 
