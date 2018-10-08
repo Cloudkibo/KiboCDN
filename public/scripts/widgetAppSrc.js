@@ -109,9 +109,8 @@
         infoPayload.location = myRes.payload;
 
         console.log(infoPayload)
+        window.__infoPayload = infoPayload
       } else if (this.readyState === 4) {
-        console.log(this)
-      } else {
         console.log(this)
       }
     };
