@@ -99,7 +99,7 @@
     infoPayload.pageTitle = document.title;
 
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://localhost:3000/api/ip2country/findIp";
+    var url = "https://app.kibopush.com/api/ip2country/findIp";
 
     xmlhttp.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
