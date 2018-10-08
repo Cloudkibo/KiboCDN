@@ -99,7 +99,7 @@
     infoPayload.pageTitle = document.title;
 
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://staging.kibopush.com/api/ip2country/findIp";
+    var url = "https://app.kibopush.com/api/ip2country/findIp";
 
     xmlhttp.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
@@ -109,7 +109,8 @@
         infoPayload.location = myRes.payload;
 
         console.log(infoPayload)
-        window.__infoPayload = infoPayload
+        let plugin = document.getElementsByClassName('fb-customerchat')[0]
+        plugin.setAttribute('ref', JSON.stringify(infoPayload))
       } else if (this.readyState === 4) {
         console.log(this)
       }
