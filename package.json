@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "uglify:css": "echo 'Uglifying CSS files...' && mkdir -p client/public/dist && uglifycss client/public/assets/vendors/custom/css/custom-style.css --output client/public/dist/custom-style.min.css client/public/Bootstrap/dist/css/latestBootstrap.css client/public/assets/Emoji/picker.css client/public/assets/dashboard/dashboard.css --output client/public/dist/kibopush.min.css && echo 'Done compiling reactjs file'"
+    "uglify:css": "echo 'Uglifying CSS files...' && mkdir -p public/dist && uglifycss public/assets/vendors/custom/css/custom-style.css --output public/dist/custom-style.min.css public/Bootstrap/dist/css/latestBootstrap.css public/assets/Emoji/picker.css public/assets/dashboard/dashboard.css --output public/dist/kibopush.min.css && echo 'Done uglifying css file'"
   },
   "repository": {
     "type": "git",
