@@ -4,7 +4,8 @@
   "description": "cdn for cloudkibo applications",
   "main": "server.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "uglify:css": "echo 'Uglifying CSS files...' && mkdir -p public/dist && uglifycss public/assets/vendors/custom/css/custom-style.css --output public/dist/custom-style.min.css public/Bootstrap/dist/css/latestBootstrap.css public/assets/Emoji/picker.css public/assets/dashboard/dashboard.css --output public/dist/kibopush.min.css && echo 'Done uglifying css file'"
   },
   "repository": {
     "type": "git",
