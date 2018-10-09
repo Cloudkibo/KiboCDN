@@ -44,6 +44,8 @@ $(document).ready(function() {
       },
       error : function(request,error)
       {
+        return document.getElementById(
+            "alertMsg").innerHTML = request.responseText.description
         console.log("Request: "+JSON.stringify(request));
       }
     });
