@@ -2,8 +2,6 @@
  * Created by sojharo on 08/01/2018.
  */
 var queryString = window.location.href.split('?')[1]
-console.log('THIS IS TESTING SINGUP.JS')
-console.log('URL Query is ' + queryString)
 
 $(document).ready(function() {
   $(".applyBtn").click(function () {
@@ -12,6 +10,7 @@ $(document).ready(function() {
     var email = $("#email").val()
     var password = $("#password").val()
     var rpassword = $("#confirm_password").val()
+    var domain = $("#domain").val()
 
     if (password !== rpassword) {
       return document.getElementById("alertMsg").innerHTML = "Passwords don't match."
@@ -20,14 +19,20 @@ $(document).ready(function() {
         "alertMsg").innerHTML = "Length of password should be greater than 6 "
     }
 
-    $.ajax({
-      url : '/api/v1/user?' + queryString,
-      type : 'POST',
-      data : {
+    let payload = {
         'name': name,
         'email': email,
         'password': password
-      },
+    }
+
+    if (domain) {
+        payload.domain = domain
+    }
+
+    $.ajax({
+      url : '/api/v1/user?' + queryString,
+      type : 'POST',
+      data : payload,
       dataType:'json',
       success : function(data) {
         console.log('Data: '+data);
