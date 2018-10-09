@@ -25,7 +25,11 @@ $(document).ready(function() {
         'password': password
     }
 
-    if (domain) {
+    if (window.location.href.includes('team')) {
+        if (domain.length <= 3) {
+          return document.getElementById(
+            "alertMsg").innerHTML = "Domain name required and length should be greater than 2"
+        }
         payload.domain = domain
     }
 
