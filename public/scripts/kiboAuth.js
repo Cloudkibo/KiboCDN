@@ -19,8 +19,8 @@ function readCookie(name) {
               wa.async = true
               const environment = readCookie('environment')
               console.log("environment found in cookie " + environment)
-              if (environment === 'staging') wa.src = 'http://saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
-              if (environment === 'production') wa.src = 'http://accounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
+              if (environment === 'staging') wa.src = 'https://saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
+              if (environment === 'production') wa.src = 'https://accounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
               var s = document.getElementsByTagName('script')[0]
               s.parentNode.insertBefore(wa, s)
           } else {
@@ -31,14 +31,14 @@ function readCookie(name) {
   
   function redirectToLogoutAccounts () {
       const environment = readCookie('environment')
-      if (environment === 'staging') window.location.replace('http://saccounts.cloudkibo.com/auth/logout?continue=http://staging.kibopush.com')
-      if (environment === 'production') window.location.replace('http://accounts.cloudkibo.com/auth/logout?continue=http://app.kibopush.com')
+      if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/auth/logout?continue=http://staging.kibopush.com')
+      if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/auth/logout?continue=http://app.kibopush.com')
     }
     
     function redirectToLoginAccounts () {
       const environment = readCookie('environment')
-      if (environment === 'staging') window.location.replace('http://saccounts.cloudkibo.com/?continue=http://staging.kibopush.com')
-      if (environment === 'production') window.location.replace('http://accounts.cloudkibo.com/?continue=http://app.kibopush.com')
+      if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/?continue=http://staging.kibopush.com')
+      if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/?continue=http://app.kibopush.com')
     }
     
     // eslint-disable-next-line
@@ -48,7 +48,7 @@ function readCookie(name) {
       else {
           document.cookie = "token=" + token;
         const environment = readCookie('environment')
-        if (environment === 'staging') window.location.replace('http://staging.kibopush.com')
-        if (environment === 'production') window.location.replace('http://app.kibopush.com')
+        if (environment === 'staging') window.location.replace('https://staging.kibopush.com')
+        if (environment === 'production') window.location.replace('https://app.kibopush.com')
       }
     }
