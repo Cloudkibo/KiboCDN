@@ -10,13 +10,16 @@ function readCookie(name) {
   }
   
       (function () {
+        console.log("IIFE called.")
           const token = readCookie('token')
+          console.log("token in cookie " + token)
           if (typeof token === 'undefined' || token === '' || token === null) {
               var wa = document.createElement('script')
               wa.type = 'text/javascript'
               wa.async = true
               const environment = readCookie('environment')
-              if (environment === 'staging') wa.src = 'http://Saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
+              console.log("environment found in cookie " + environment)
+              if (environment === 'staging') wa.src = 'http://saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
               if (environment === 'production') wa.src = 'http://accounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
               var s = document.getElementsByTagName('script')[0]
               s.parentNode.insertBefore(wa, s)
@@ -28,18 +31,19 @@ function readCookie(name) {
   
   function redirectToLogoutAccounts () {
       const environment = readCookie('environment')
-      if (environment === 'staging') window.location.replace('http://Saccounts.cloudkibo.com/auth/logout?continue=http://staging.kibopush.com')
+      if (environment === 'staging') window.location.replace('http://saccounts.cloudkibo.com/auth/logout?continue=http://staging.kibopush.com')
       if (environment === 'production') window.location.replace('http://accounts.cloudkibo.com/auth/logout?continue=http://app.kibopush.com')
     }
     
     function redirectToLoginAccounts () {
       const environment = readCookie('environment')
-      if (environment === 'staging') window.location.replace('http://Saccounts.cloudkibo.com/?continue=http://staging.kibopush.com')
+      if (environment === 'staging') window.location.replace('http://saccounts.cloudkibo.com/?continue=http://staging.kibopush.com')
       if (environment === 'production') window.location.replace('http://accounts.cloudkibo.com/?continue=http://app.kibopush.com')
     }
     
     // eslint-disable-next-line
     function CloudKiboAuthFunction (token) {
+      console.log("token came from accounts server " + environment)
       if (token === 'undefined') redirectToLoginAccounts()
       else {
           document.cookie = "token=" + token;
