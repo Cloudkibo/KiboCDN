@@ -51,9 +51,11 @@ $(document).ready(function() {
       },
       error : function(request,error)
       {
+        console.log(request)
+        console.log(error)
+        console.log("Request: " + JSON.stringify(request));
         return document.getElementById(
             "alertMsg").innerHTML = request.responseText.description
-        console.log("Request: "+JSON.stringify(request));
       }
     });
   })
