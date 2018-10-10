@@ -50,7 +50,7 @@ $(document).ready(function() {
         console.log(error)
         console.log("Request: "+JSON.stringify(request));
         return document.getElementById(
-            "alertMsg").innerHTML = request.responseText.description
+            "alertMsg").innerHTML = request.responseJSON.description
       }
     });
   })
