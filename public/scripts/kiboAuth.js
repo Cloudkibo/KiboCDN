@@ -43,7 +43,7 @@ function readCookie(name) {
     
     // eslint-disable-next-line
     function CloudKiboAuthFunction (token) {
-      console.log("token came from accounts server " + environment)
+      console.log("token came from accounts server " + token)
       if (token === 'undefined') redirectToLoginAccounts()
       else {
           document.cookie = "token=" + token;
