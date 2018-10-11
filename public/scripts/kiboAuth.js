@@ -8,7 +8,7 @@ function readCookie(name) {
     }
     return null;
   }
-  
+
       (function () {
         console.log("IIFE called.")
           const token = readCookie('token')
@@ -24,17 +24,17 @@ function readCookie(name) {
               var s = document.getElementsByTagName('script')[0]
               s.parentNode.insertBefore(wa, s)
           } else {
-  
+
           }
       })();
 
-    
+
     function redirectToLoginAccounts () {
       const environment = readCookie('environment')
-      if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/?continue=http://staging.kibopush.com')
-      if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/?continue=http://app.kibopush.com')
+      if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/?continue=' + window.__url_staging)
+      if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/?continue=' + window.__url_production)
     }
-    
+
     // eslint-disable-next-line
     function CloudKiboAuthFunction (token) {
       console.log("token came from accounts server " + token)
@@ -42,7 +42,7 @@ function readCookie(name) {
       else {
           document.cookie = "token=" + token;
         const environment = readCookie('environment')
-        if (environment === 'staging') window.location.replace('https://staging.kibopush.com')
-        if (environment === 'production') window.location.replace('https://app.kibopush.com')
+        if (environment === 'staging') window.location.replace(window.__url_staging)
+        if (environment === 'production') window.location.replace(window.__url_production)
       }
     }
