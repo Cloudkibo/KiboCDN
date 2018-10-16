@@ -11,7 +11,7 @@ if (tokenCookie) {
 }
 
 $(document).ready(function() {
-  $(".applyBtn").click(function () {
+  $(".forgetBtn").click(function () {
     document.getElementById("alertMsg").innerHTML = ""
     var email = $("#email").val()
 
