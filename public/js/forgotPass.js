@@ -25,7 +25,7 @@ $(document).ready(function() {
       data : payload,
       dataType:'json',
       success : function(data) {
-        console.log('Data: '+data);
+        console.log('Data: '+ {data});
         return document.getElementById(
             "alertMsg").innerHTML = request.responseJSON.description
       },
