@@ -27,7 +27,7 @@ $(document).ready(function() {
       success : function(data) {
         console.log('Data: '+ JSON.stringify(data));
         return document.getElementById(
-            "alertMsg").innerHTML = data.responseJSON.description
+            "alertMsg").innerHTML = data.description
       },
       error : function(request,error)
       {
