@@ -20,7 +20,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-      url : '/api/v1/reset_password/forgot' + queryString,
+      url : '/api/v1/reset_password/forgot',
       type : 'POST',
       data : payload,
       dataType:'json',
