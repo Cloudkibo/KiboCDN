@@ -41,9 +41,8 @@ $(document).ready(function() {
       data : payload,
       dataType:'json',
       success : function(data) {
-        console.log('Data: ' + data);
-        console.log(data);
-        // window.location.replace(queryString.split('=')[1]);
+        console.log('Data: '+data);
+        window.location.replace(queryString.split('=')[1]);
       },
       error : function(request,error)
       {
