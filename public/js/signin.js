@@ -7,7 +7,7 @@ var tokenCookie = readCookie("token")
 
 if (tokenCookie) {
     // TODO CORRECT THIS TO NEW URLs WHEN AVAILABLE
-    window.location.replace('https://app.kibopush.com');
+    window.location.replace(queryString.split('=')[1]);
 }
 
 $(document).ready(function() {

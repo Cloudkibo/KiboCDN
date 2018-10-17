@@ -19,6 +19,7 @@ function readCookie(name) {
               wa.async = true
               const environment = readCookie('environment')
               console.log("environment found in cookie " + environment)
+              if (environment === 'development') wa.src = 'http://localhost:3001/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
               if (environment === 'staging') wa.src = 'https://saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
               if (environment === 'production') wa.src = 'https://accounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
               var s = document.getElementsByTagName('script')[0]
@@ -31,6 +32,7 @@ function readCookie(name) {
 
     function redirectToLoginAccounts () {
       const environment = readCookie('environment')
+      if (environment === 'development') window.location.replace('http://localhost:3001/?continue=' + window.__url_staging)
       if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/?continue=' + window.__url_staging)
       if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/?continue=' + window.__url_production)
     }
@@ -42,6 +44,7 @@ function readCookie(name) {
       else {
           document.cookie = "token=" + token;
         const environment = readCookie('environment')
+        if (environment === 'development') window.location.replace(window.__url_development)
         if (environment === 'staging') window.location.replace(window.__url_staging)
         if (environment === 'production') window.location.replace(window.__url_production)
       }
