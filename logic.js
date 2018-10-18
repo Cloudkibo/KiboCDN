@@ -1,6 +1,7 @@
 const url = require('url')
 const fs = require('fs')
 const path = require('path')
+const formidable = require('formidable');
 
 // maps file extention to MIME types
 const mimeType = {
@@ -25,6 +26,7 @@ exports.logic = function (req, res) {
 
   // parse URL
   const parsedUrl = url.parse(req.url)
+
   // extract URL path
   // Avoid https://en.wikipedia.org/wiki/Directory_traversal_attack
   // e.g curl --path-as-is http://localhost:9000/../fileInDanger.txt
@@ -33,6 +35,22 @@ exports.logic = function (req, res) {
   const sanitizePath = path.normalize(parsedUrl.pathname).replace(/^(\.\.[\/\\])+/, '')
   /* eslint-enable */
   let pathname = path.join(__dirname, sanitizePath)
+
+  // Upload bundle.js logic
+  if (req.url === '/fileupload' && req.method.toLowerCase() === 'post') {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      var oldpath = files.bundle.path;
+      var newpath = __dirname + '/public/' + files.bundle.name;
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        res.write('File uploaded and moved!');
+        res.end();
+      });
+    });
+    return ;
+  }
+
   fs.access(pathname, fs.constants.F_OK, (err) => {
     if (err) {
       // if the file is not found, return 404
