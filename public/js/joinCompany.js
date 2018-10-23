@@ -51,6 +51,8 @@ $(document).ready(function() {
       error : function(request,error)
       {
         console.log("Request: "+JSON.stringify(request));
+        return document.getElementById(
+          "alertMsg").innerHTML = request.responseJSON.description
       }
     });
   })
