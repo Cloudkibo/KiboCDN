@@ -35,7 +35,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-      url : '/api/v1/users/joinCompany',
+      url : '/api/v1/user/joinCompany',
       type : 'POST',
       data : {
         'name': name,
