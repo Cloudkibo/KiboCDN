@@ -1,8 +1,17 @@
 /**
  * Created by sojharo on 08/01/2018.
  */
-var token = window.location.pathname.split('/')[4]
+var arr = window.location.pathname.split('/')
+var token = arr[arr.length - 1]
 console.log(token)
+
+// check auth
+var tokenCookie = readCookie("token")
+
+if (tokenCookie) {
+    // TODO CORRECT THIS TO NEW URLs WHEN AVAILABLE
+    window.location.replace(queryString.split('=')[1]);
+}
 
 $(document).ready(function() {
   var emailString = readCookie("email").split('%40');
@@ -19,7 +28,7 @@ $(document).ready(function() {
   nameString = nameString.trim()
   $("#email").val(emailString)
   $("#name").val(nameString)
-  $("#applyBtn").click(function () {
+  $("#applyBtnJoinCompany").click(function () {
     document.getElementById("alertMsg").innerHTML = ""
     var name = $("#name").val()
     var email = $("#email").val()
