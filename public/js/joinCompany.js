@@ -5,14 +5,6 @@ var arr = window.location.pathname.split('/')
 var token = arr[arr.length - 1]
 console.log(token)
 
-// check auth
-var tokenCookie = readCookie("token")
-
-if (tokenCookie) {
-    // TODO CORRECT THIS TO NEW URLs WHEN AVAILABLE
-    window.location.replace(queryString.split('=')[1]);
-}
-
 $(document).ready(function() {
   var emailString = readCookie("email").split('%40');
   emailString = emailString[0] + '@' + emailString[1];
@@ -43,7 +35,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-      url : '/api/users/joinCompany',
+      url : '/api/v1/users/joinCompany',
       type : 'POST',
       data : {
         'name': name,
