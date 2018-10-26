@@ -17,22 +17,32 @@ $(document).ready(function() {
     var password = $("#password").val()
     var domain = $("#domain").val()
 
-    if (password.length <= 6) {
-      return document.getElementById(
-        "alertMsg").innerHTML = "Length of password should be greater than 6 "
-    }
-
-    let payload = {
-        'email': email,
-        'password': password
-    }
+    let payload = {}
 
     if (window.location.href.includes('team')) {
-        if (domain.length <= 3) {
-          return document.getElementById(
-            "alertMsg").innerHTML = "Domain name required and length should be greater than 2"
-        }
-        payload.domain = domain
+      if (domain === '') {
+        return document.getElementById("alertMsg")
+          .innerHTML = "Domain name is required."
+      } else if (email === '') {
+        return document.getElementById("alertMsg")
+          .innerHTML = "Email is required."
+      } else if (password === '') {
+        return document.getElementById(
+          "alertMsg").innerHTML = "Password is required."
+      }
+      payload.email = email
+      payload.domain = domain
+      payload.password = password
+    } else {
+      if (email === '') {
+        return document.getElementById("alertMsg")
+          .innerHTML = "Email is required."
+      } else if (password === '') {
+        return document.getElementById(
+          "alertMsg").innerHTML = "Password is required."
+      }
+      payload.email = email
+      payload.password = password
     }
 
     $.ajax({
