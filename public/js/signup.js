@@ -18,6 +18,7 @@ $(document).ready(function() {
     var password = $("#password").val()
     var rpassword = $("#confirm_password").val()
     var domain = $("#domain").val()
+    var company_name = $("#CompanyName").val()
     var response = grecaptcha.getResponse();
 
     if (password !== rpassword) {
@@ -43,7 +44,13 @@ $(document).ready(function() {
           return document.getElementById(
             "alertMsg").innerHTML = "Domain name required and length should be greater than 2"
         }
+        if (company_name.length <= 3) {
+          return document.getElementById(
+            "alertMsg").innerHTML = "Company name required and length should be greater than 2"
+        }
+
         payload.domain = domain
+        payload.company_name = company_name
     }
 
     $.ajax({
