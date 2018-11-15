@@ -18,12 +18,18 @@ $(document).ready(function() {
     var password = $("#password").val()
     var rpassword = $("#confirm_password").val()
     var domain = $("#domain").val()
+    var response = grecaptcha.getResponse();
 
     if (password !== rpassword) {
       return document.getElementById("alertMsg").innerHTML = "Passwords don't match."
     } else if (password.length <= 6) {
       return document.getElementById(
         "alertMsg").innerHTML = "Length of password should be greater than 6 "
+    }
+
+    if(response.length == 0) {
+      return document.getElementById(
+        "alertMsg").innerHTML = "please select captcha field"
     }
 
     let payload = {
