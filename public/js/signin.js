@@ -3,7 +3,7 @@
  */
 var queryString = window.location.href.split('?')[1]
 
-let environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
+var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
 
 if (queryString === undefined) {
   if (environment === 'staging') {
