@@ -5,16 +5,19 @@ var queryString = window.location.href.split('?')[1]
 
 var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
 
-if (queryString.split('=')[1] === undefined || queryString === undefined) {
-  if (environment === 'staging') {
-    queryString = 'continue=https://skiboengage.cloudkibo.com'
-  }
-  else {
-    queryString = 'continue=https://kiboengage.cloudkibo.com'
-  }
+console.log(queryString)
+
+if (queryString === undefined) {
+  window.location.replace(defaultURL())
+} else if (queryString.split('=')[1] === undefined) {
+  window.location.replace(defaultURL())
 }
 
-console.log(queryString)
+function defaultURL() {
+  var stagingUrl = 'https://saccounts.cloudkibo.com/?continue=https://skiboengage.cloudkibo.com';
+  var productionUrl = 'https://accounts.cloudkibo.com/?continue=https://kiboengage.cloudkibo.com';
+  return (environment === 'staging') ? stagingUrl : productionUrl
+}
 
 var tokenCookie = readCookie("token")
 
