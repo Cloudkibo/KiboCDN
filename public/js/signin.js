@@ -3,10 +3,22 @@
  */
 var queryString = window.location.href.split('?')[1]
 
+let environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
+
+if (queryString === undefined) {
+  if (environment === 'staging') {
+    queryString = 'continue=https://skiboengage.cloudkibo.com'
+  }
+  else {
+    queryString = 'continue=https://kiboengage.cloudkibo.com'
+  }
+}
+
+console.log(queryString)
+
 var tokenCookie = readCookie("token")
 
 if (tokenCookie) {
-    // TODO CORRECT THIS TO NEW URLs WHEN AVAILABLE
     window.location.replace(queryString.split('=')[1]);
 }
 

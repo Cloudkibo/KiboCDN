@@ -4,6 +4,9 @@
 /**
  * Created by sojharo on 08/01/2018.
  */
+
+ // TODO REMOVE THIS FILE IN FUTURE : Sojharo
+
 var token = window.location.pathname.split('/')[3]
 console.log(token)
 
