@@ -5,7 +5,7 @@ var queryString = window.location.href.split('?')[1]
 
 var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
 
-if (queryString === undefined || queryString.split('=')[1] === undefined) {
+if (queryString.split('=')[1] === undefined || queryString === undefined) {
   if (environment === 'staging') {
     queryString = 'continue=https://skiboengage.cloudkibo.com'
   }
