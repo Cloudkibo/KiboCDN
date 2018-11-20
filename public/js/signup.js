@@ -71,11 +71,11 @@ $(document).ready(function() {
     if (window.location.href.includes('team')) {
         if (domain.length <= 3) {
           return document.getElementById(
-            "alertMsg").innerHTML = "Domain name required and length should be greater than 2"
+            "alertMsg").innerHTML = "Domain name required and length should be greater than 3"
         }
         if (company_name.length <= 3) {
           return document.getElementById(
-            "alertMsg").innerHTML = "Company name required and length should be greater than 2"
+            "alertMsg").innerHTML = "Company name required and length should be greater than 3"
         }
 
         payload.domain = domain
