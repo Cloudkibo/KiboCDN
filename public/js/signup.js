@@ -36,6 +36,20 @@ $(document).ready(function() {
     var company_name = $("#CompanyName").val()
     var response = grecaptcha.getResponse();
 
+    if(name.length == 0) {
+      return document.getElementById(
+        "alertMsg").innerHTML = "please Enter Name"
+    }
+    if(email.length == 0) {
+      return document.getElementById(
+        "alertMsg").innerHTML = "please Enter email"
+    }
+    if(password.length == 0) {
+      return document.getElementById(
+        "alertMsg").innerHTML = "please Enter valid Password"
+    }
+
+    
     if (password !== rpassword) {
       return document.getElementById("alertMsg").innerHTML = "Passwords don't match."
     } else if (password.length <= 6) {
