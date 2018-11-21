@@ -2,24 +2,23 @@
  * Created by sojharo on 08/01/2018.
  */
 var queryString = window.location.href.split('?')[1]
-
 var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
 var tokenCookie = readCookie("token")
 
-console.log(queryString)
+var stagingUrl = 'https://saccounts.cloudkibo.com/?continue=https://skiboengage.cloudkibo.com';
+var productionUrl = 'https://accounts.cloudkibo.com/?continue=https://kiboengage.cloudkibo.com';
+var defaultURL = (environment === 'staging') ? stagingUrl : productionUrl
+
+console.log('Query string ', queryString)
+console.log('default URL ', defaultURL)
+console.log('token cookie ', tokenCookie)
 
 if (queryString === undefined) {
-  shouldWeRedirectTheLoggedIn(defaultURL())
-  window.location.replace(defaultURL())
+  shouldWeRedirectTheLoggedIn(defaultURL)
+  window.location.replace(defaultURL)
 } else if (queryString.split('=')[1] === undefined) {
-  shouldWeRedirectTheLoggedIn(defaultURL())
-  window.location.replace(defaultURL())
-}
-
-function defaultURL() {
-  var stagingUrl = 'https://saccounts.cloudkibo.com/?continue=https://skiboengage.cloudkibo.com';
-  var productionUrl = 'https://accounts.cloudkibo.com/?continue=https://kiboengage.cloudkibo.com';
-  return (environment === 'staging') ? stagingUrl : productionUrl
+  shouldWeRedirectTheLoggedIn(defaultURL)
+  window.location.replace(defaultURL)
 }
 
 function shouldWeRedirectTheLoggedIn (redirectURL) {
@@ -28,7 +27,7 @@ function shouldWeRedirectTheLoggedIn (redirectURL) {
   }
 }
 
-shouldWeRedirectTheLoggedIn(queryString)
+shouldWeRedirectTheLoggedIn(queryString))
 
 $(document).ready(function() {
   $(".signUpBtn").click(function () {
