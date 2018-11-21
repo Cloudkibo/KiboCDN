@@ -4,12 +4,15 @@
 var queryString = window.location.href.split('?')[1]
 
 var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
+var tokenCookie = readCookie("token")
 
 console.log(queryString)
 
 if (queryString === undefined) {
+  shouldWeRedirectTheLoggedIn(defaultURL())
   window.location.replace(defaultURL())
 } else if (queryString.split('=')[1] === undefined) {
+  shouldWeRedirectTheLoggedIn(defaultURL())
   window.location.replace(defaultURL())
 }
 
@@ -19,11 +22,13 @@ function defaultURL() {
   return (environment === 'staging') ? stagingUrl : productionUrl
 }
 
-var tokenCookie = readCookie("token")
-
-if (tokenCookie) {
-    window.location.replace(queryString.split('=')[1]);
+function shouldWeRedirectTheLoggedIn (redirectURL) {
+  if (tokenCookie) {
+      window.location.replace(redirectURL.split('=')[1]);
+  }
 }
+
+shouldWeRedirectTheLoggedIn(queryString)
 
 $(document).ready(function() {
   $(".signUpBtn").click(function () {
