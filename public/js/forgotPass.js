@@ -9,25 +9,23 @@ var stagingUrl = 'https://saccounts.cloudkibo.com/?continue=https://skiboengage.
 var productionUrl = 'https://accounts.cloudkibo.com/?continue=https://kiboengage.cloudkibo.com';
 var defaultURL = (environment === 'staging') ? stagingUrl : productionUrl
 
-console.log('Query string ', queryString)
-console.log('default URL ', defaultURL)
-console.log('token cookie ', tokenCookie)
-
 if (queryString === undefined) {
   shouldWeRedirectTheLoggedIn(defaultURL)
   window.location.replace(defaultURL)
 } else if (queryString.split('=')[1] === undefined) {
   shouldWeRedirectTheLoggedIn(defaultURL)
   window.location.replace(defaultURL)
+} else {
+  shouldWeRedirectTheLoggedIn(queryString)
 }
 
 function shouldWeRedirectTheLoggedIn (redirectURL) {
   if (tokenCookie) {
-      window.location.replace(redirectURL.split('=')[1]);
+    var finalRedirectURL = redirectURL.split('=')[1];
+    console.log('final redirect URL : ', finalRedirectURL);
+    window.location.replace(finalRedirectURL);
   }
 }
-
-shouldWeRedirectTheLoggedIn(queryString)
 
 $(document).ready(function() {
   $(".forgetBtn").click(function () {
