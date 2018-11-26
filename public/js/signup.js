@@ -21,7 +21,6 @@ $(document).ready(function() {
     var checkboxValue = $('#checkboxAgreement').val()
     var response = grecaptcha.getResponse();
 
-    console.log('checkboxValue', checkboxValue)
     if(name.length == 0) {
       return document.getElementById(
         "alertMsg").innerHTML = "please Enter Name"
@@ -53,10 +52,10 @@ $(document).ready(function() {
       return document.getElementById(
         "alertMsg").innerHTML = "please select captcha field"
     }
-
+    console.log('checkboxValue', checkboxValue)
     if(!checkboxValue) {
       return document.getElementById(
-        "alertMsg").innerHTML = "please Accept terms and condition"
+        "alertMsg").innerHTML = "please Accept terms and Agreement"
     }
 
     let payload = {
