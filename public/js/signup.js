@@ -18,6 +18,7 @@ $(document).ready(function() {
     var rpassword = $("#confirm_password").val()
     var domain = $("#domain").val()
     var company_name = $("#CompanyName").val()
+    var checkboxValue = $('#checkboxAgreement').val()
     var response = grecaptcha.getResponse();
 
     if(name.length == 0) {
@@ -50,6 +51,11 @@ $(document).ready(function() {
     if(response.length == 0) {
       return document.getElementById(
         "alertMsg").innerHTML = "please select captcha field"
+    }
+
+    if(!checkboxValue) {
+      return document.getElementById(
+        "alertMsg").innerHTML = "please Accept terms and condition"
     }
 
     let payload = {
