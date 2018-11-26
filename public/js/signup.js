@@ -21,6 +21,7 @@ $(document).ready(function() {
     var checkboxValue = $('#checkboxAgreement').val()
     var response = grecaptcha.getResponse();
 
+    console.log('checkboxValue', checkboxValue)
     if(name.length == 0) {
       return document.getElementById(
         "alertMsg").innerHTML = "please Enter Name"
