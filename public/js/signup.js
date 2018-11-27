@@ -4,7 +4,10 @@
 var queryString = window.location.href.split('?')[1]
 var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
 var tokenCookie = readCookie("token")
-
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
 $(document).ready(function() {
   $(".signUpBtn").click(function () {
     document.getElementById("alertMsg").innerHTML = ""
@@ -14,6 +17,7 @@ $(document).ready(function() {
     var rpassword = $("#confirm_password").val()
     var domain = $("#domain").val()
     var company_name = $("#CompanyName").val()
+    var selectedCheckBox=$("#checkboxAgreement").val()
     var response = grecaptcha.getResponse();
 
     if(name.length == 0) {
@@ -24,6 +28,11 @@ $(document).ready(function() {
       return document.getElementById(
         "alertMsg").innerHTML = "please Enter email"
     }
+    if(!validateEmail(email)) {
+      return document.getElementById(
+        "alertMsg").innerHTML = "please Enter valid email"
+    }
+
     if(password.length == 0) {
       return document.getElementById(
         "alertMsg").innerHTML = "please Enter valid Password"
@@ -60,6 +69,11 @@ $(document).ready(function() {
 
         payload.domain = domain
         payload.company_name = company_name
+    }
+
+    if(!selectedCheckBox) {
+      return document.getElementById(
+        "alertMsg").innerHTML = "please select terms and condition"
     }
 
     $.ajax({
