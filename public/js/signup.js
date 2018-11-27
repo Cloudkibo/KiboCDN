@@ -71,6 +71,8 @@ $(document).ready(function() {
         payload.company_name = company_name
     }
 
+    console.log('selectedCheckBox',selectedCheckBox)
+
     if(!selectedCheckBox) {
       return document.getElementById(
         "alertMsg").innerHTML = "please select terms and condition"
