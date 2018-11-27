@@ -17,7 +17,7 @@ $(document).ready(function() {
     var rpassword = $("#confirm_password").val()
     var domain = $("#domain").val()
     var company_name = $("#CompanyName").val()
-    var selectedCheckBox=$("#checkboxAgreement").val()
+    var selectedCheckBox= document.getElementById("checkboxAgreement").checked  
     var response = grecaptcha.getResponse();
 
     if(name.length == 0) {
