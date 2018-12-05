@@ -4,7 +4,10 @@
 var queryString = window.location.href.split('?')[1]
 var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
 var tokenCookie = readCookie("token")
-
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
 $(document).ready(function() {
   $(".loginBtn").click(function () {
     document.getElementById("alertMsg").innerHTML = ""
@@ -21,9 +24,18 @@ $(document).ready(function() {
       } else if (email === '') {
         return document.getElementById("alertMsg")
           .innerHTML = "Email is required."
-      } else if (password === '') {
+      }
+      else if(!validateEmail(email)) {
+        return document.getElementById(
+          "alertMsg").innerHTML = "please Enter valid email"
+      }  
+      else if (password === '') {
         return document.getElementById(
           "alertMsg").innerHTML = "Password is required."
+      }
+      else if (password.length <= 6) {
+        return document.getElementById(
+          "alertMsg").innerHTML = "Length of password should be greater than 6 "
       }
       payload.email = email
       payload.domain = domain
@@ -32,9 +44,18 @@ $(document).ready(function() {
       if (email === '') {
         return document.getElementById("alertMsg")
           .innerHTML = "Email is required."
-      } else if (password === '') {
+      }
+      else if(!validateEmail(email)) {
+        return document.getElementById(
+          "alertMsg").innerHTML = "please Enter valid email"
+      }
+      else if (password === '') {
         return document.getElementById(
           "alertMsg").innerHTML = "Password is required."
+      }
+      else if (password.length <= 6) {
+        return document.getElementById(
+          "alertMsg").innerHTML = "Length of password should be greater than 6 "
       }
       payload.email = email
       payload.password = password
