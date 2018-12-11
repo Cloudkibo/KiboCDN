@@ -15,7 +15,7 @@ function readCookie(name) {
   console.log("token in cookie " + token)
   if (typeof token === 'undefined' || token === '' || token === null) {
     var wa = document.createElement('script')
-    wa.type = 'text/javascript'
+    wa.type = 'application/javascript'
     wa.async = true
     const environment = readCookie('environment')
     console.log("environment found in cookie " + environment)
