@@ -75,6 +75,7 @@ $(document).ready(function() {
         console.log(request)
         console.log(error)
         console.log("Request: " + JSON.stringify(request));
+        console.log("Request JSON: " + request.responseJSON);
         return document.getElementById(
             "alertMsg").innerHTML = request.responseJSON.description
       }
