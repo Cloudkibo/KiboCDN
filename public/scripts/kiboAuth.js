@@ -25,7 +25,7 @@ function readCookie(name) {
     var s = document.getElementsByTagName('script')[0]
     s.parentNode.insertBefore(wa, s)
   } else {
-    
+
   }
 })();
 
@@ -40,12 +40,14 @@ function redirectToLoginAccounts() {
 // eslint-disable-next-line
 function CloudKiboAuthFunction(token) {
   console.log("token came from accounts server " + token)
-  if (token === 'undefined') redirectToLoginAccounts()
-  else {
-    document.cookie = "token=" + token;
-    const environment = readCookie('environment')
-    if (environment === 'development') window.location.replace(window.__url_development)
-    if (environment === 'staging') window.location.replace(window.__url_staging)
-    if (environment === 'production') window.location.replace(window.__url_production)
+  if (!window.location.hostname.includes('cloudkibo.com/demoSSA')) {
+    if (token === 'undefined') redirectToLoginAccounts()
+    else {
+      document.cookie = "token=" + token;
+      const environment = readCookie('environment')
+      if (environment === 'development') window.location.replace(window.__url_development)
+      if (environment === 'staging') window.location.replace(window.__url_staging)
+      if (environment === 'production') window.location.replace(window.__url_production)
+    }
   }
 }
