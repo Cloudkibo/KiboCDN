@@ -40,7 +40,7 @@ function redirectToLoginAccounts() {
 // eslint-disable-next-line
 function CloudKiboAuthFunction(token) {
   console.log("token came from accounts server " + token)
-  if (!window.location.hostname.includes('cloudkibo.com/demoSSA')) {
+  if (!window.location.pathname === '/demoSSA')) {
     if (token === 'undefined') redirectToLoginAccounts()
     else {
       document.cookie = "token=" + token;
