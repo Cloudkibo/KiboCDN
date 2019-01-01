@@ -18,8 +18,10 @@ $(document).ready(function() {
     nameString = nameString[0]
   }
   nameString = nameString.trim()
+  var companyNameString = readCookie("companyName").trim();
   $("#email").val(emailString)
   $("#name").val(nameString)
+  $("#company").val(companyNameString)
   $("#applyBtnJoinCompany").click(function () {
     document.getElementById("alertMsg").innerHTML = ""
     var name = $("#name").val()
