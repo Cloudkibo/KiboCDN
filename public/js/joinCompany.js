@@ -23,7 +23,7 @@ $(document).ready(function() {
     var tempDomain = domainString
     domainString = ''
     for (var j = 0; j < tempDomain.length; j++) {
-      domainString += tempDomain[i] + ' ';
+      domainString += tempDomain[j] + ' ';
     }
   } else {
     domainString = domainString[0]
