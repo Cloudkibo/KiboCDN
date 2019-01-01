@@ -18,10 +18,19 @@ $(document).ready(function() {
     nameString = nameString[0]
   }
   nameString = nameString.trim()
-  var companyNameString = readCookie("companyName").trim();
+  var domainString = readCookie("domain").split('%20');
+  if (domainString.length > 1) {
+    var tempDomain = domainString
+    domainString = ''
+    for (var j = 0; j < tempDomain.length; j++) {
+      domainString += tempDomain[i] + ' ';
+    }
+  } else {
+    domainString = domainString[0]
+  }
   $("#email").val(emailString)
   $("#name").val(nameString)
-  $("#company").val(companyNameString)
+  $("#domain").val(domainString)
   $("#applyBtnJoinCompany").click(function () {
     document.getElementById("alertMsg").innerHTML = ""
     var name = $("#name").val()
