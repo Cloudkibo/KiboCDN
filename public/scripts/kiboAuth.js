@@ -13,20 +13,16 @@ function readCookie(name) {
   console.log("IIFE called.")
   const token = readCookie('token')
   console.log("token in cookie " + token)
-  if (typeof token === 'undefined' || token === '' || token === null) {
-    var wa = document.createElement('script')
-    wa.type = 'application/javascript'
-    wa.async = true
-    const environment = readCookie('environment')
-    console.log("environment found in cookie " + environment)
-    if (environment === 'development') wa.src = 'http://localhost:3001/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
-    if (environment === 'staging') wa.src = 'https://saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
-    if (environment === 'production') wa.src = 'https://accounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
-    var s = document.getElementsByTagName('script')[0]
-    s.parentNode.insertBefore(wa, s)
-  } else {
-
-  }
+  var wa = document.createElement('script')
+  wa.type = 'application/javascript'
+  wa.async = true
+  const environment = readCookie('environment')
+  console.log("environment found in cookie " + environment)
+  if (environment === 'development') wa.src = 'http://localhost:3001/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
+  if (environment === 'staging') wa.src = 'https://saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
+  if (environment === 'production') wa.src = 'https://accounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
+  var s = document.getElementsByTagName('script')[0]
+  s.parentNode.insertBefore(wa, s)
 })();
 
 
