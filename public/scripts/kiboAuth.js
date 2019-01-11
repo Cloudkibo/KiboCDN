@@ -40,10 +40,10 @@ function CloudKiboAuthFunction(token) {
     if (token === 'undefined') redirectToLoginAccounts()
     else {
       document.cookie = "token=" + token;
-      const environment = readCookie('environment')
-      if (environment === 'development') window.location.replace(window.__url_development)
-      if (environment === 'staging') window.location.replace(window.__url_staging)
-      if (environment === 'production') window.location.replace(window.__url_production)
+      // const environment = readCookie('environment')
+      // if (environment === 'development') window.location.replace(window.__url_development)
+      // if (environment === 'staging') window.location.replace(window.__url_staging)
+      // if (environment === 'production') window.location.replace(window.__url_production)
     }
   }
 }
