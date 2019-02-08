@@ -37,10 +37,10 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-client/public/bundle.js
-client/public/bundle.js.map
-client/public/bundle_staging.js
-client/public/dist/
+public/bundle.js
+public/bundle.js.map
+public/bundle_staging.js
+public/dist/
 server/api/backdoor/my-file.csv
 
 # Typescript v1 declaration files
