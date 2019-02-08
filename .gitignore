@@ -37,8 +37,9 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-client/public/js/bundle.js
-client/public/js/bundle.js.map
+client/public/bundle.js
+client/public/bundle.js.map
+client/public/bundle_staging.js
 client/public/dist/
 server/api/backdoor/my-file.csv
 
