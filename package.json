@@ -1,0 +1,31 @@
+{
+  "name": "kibo-cdn",
+  "version": "1.0.0",
+  "description": "cdn for cloudkibo applications",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "uglify:css": "echo 'Uglifying CSS files...' && mkdir -p public/dist && uglifycss public/assets/vendors/custom/css/custom-style.css --output public/dist/custom-style.min.css public/Bootstrap/dist/css/latestBootstrap.css public/assets/Emoji/picker.css public/assets/dashboard/dashboard.css --output public/dist/kibopush.min.css && echo 'Done uglifying css file'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudKibo/KiboCDN.git"
+  },
+  "keywords": [
+    "CDN",
+    "KiboPush",
+    "KiboChat",
+    "CloudKibo",
+    "KiboEngage"
+  ],
+  "author": "Imran, Sojharo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CloudKibo/KiboCDN/issues"
+  },
+  "homepage": "https://github.com/CloudKibo/KiboCDN#readme",
+  "dependencies": {
+    "formidable": "^1.2.1",
+    "uglifycss": "0.0.29"
+  }
+}
