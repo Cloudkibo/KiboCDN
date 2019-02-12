@@ -75,7 +75,9 @@ exports.logic = function (req, res) {
         const ext = path.parse(pathname).ext
         // if the file is found, set Content-type and send data
         res.setHeader('Content-type', mimeType[ext] || 'text/plain')
-        if (req.url === '/public/bundle.js') {
+
+        // setting up the cache policy
+        if (req.url === '/public/bundle.js' || req.url === '/public/bundle_staging.js') {
           res.setHeader('Cache-Control', 'public, max-age=432000, no-cache')
         } else {
           res.setHeader('Cache-Control', 'public, max-age=31536000')
