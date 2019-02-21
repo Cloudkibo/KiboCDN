@@ -78,7 +78,7 @@ exports.logic = function (req, res) {
 
         // setting up the cache policy
         if (req.url === '/public/bundle.js' || req.url === '/public/bundle_staging.js') {
-          res.setHeader('Cache-Control', 'public, max-age=432000, no-cache')
+          // res.setHeader('Cache-Control', 'public, max-age=432000, no-cache')
         } else {
           res.setHeader('Cache-Control', 'public, max-age=31536000')
         }
