@@ -2,6 +2,7 @@ const url = require('url')
 const fs = require('fs')
 const path = require('path')
 const formidable = require('formidable');
+const etag = require('etag')
 
 // maps file extention to MIME types
 const mimeType = {
@@ -73,14 +74,25 @@ exports.logic = function (req, res) {
       } else {
         // based on the URL path, extract the file extention. e.g. .js, .doc, ...
         const ext = path.parse(pathname).ext
-        // if the file is found, set Content-type and send data
+        // if the file is found, set Content-type and prepare to send data
         res.setHeader('Content-type', mimeType[ext] || 'text/plain')
+        res.setHeader('ETag', etag(data))
+
+        if (req.headers.hasOwnProperty('if-none-match')) {
+          // if required file is not changed, ask browser to use cache
+          if (req.headers['if-none-match'] === etag(data)) {
+            res.statusCode = 304;
+            res.end();
+            return ;
+          }
+        }
 
         // setting up the cache policy
         if (req.url === '/public/bundle.js' || req.url === '/public/bundle_staging.js') {
-          res.setHeader('Cache-Control', 'public, max-age=432000, no-cache')
+          // set cache duration for 2 hours, and revalidate from server about expiry
+          res.setHeader('Cache-Control', 'max-age=7200, must-revalidate')
         } else {
-          res.setHeader('Cache-Control', 'public, max-age=31536000')
+          res.setHeader('Cache-Control', 'max-age=31536000, must-revalidate')
         }
         res.end(data)
       }

@@ -37,6 +37,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
+# Reactjs Bundle related files
 public/bundle.js
 public/bundle.js.map
 public/bundle_staging.js
