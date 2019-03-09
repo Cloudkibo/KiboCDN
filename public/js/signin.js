@@ -28,7 +28,7 @@ $(document).ready(function() {
       else if(!validateEmail(email)) {
         return document.getElementById(
           "alertMsg").innerHTML = "please Enter valid email"
-      }  
+      }
       else if (password === '') {
         return document.getElementById(
           "alertMsg").innerHTML = "Password is required."
@@ -67,7 +67,8 @@ $(document).ready(function() {
       data : payload,
       dataType:'json',
       success : function(data) {
-        console.log('Data: '+data);
+        console.log('Data token: ' + data.token);
+        document.cookie = "token=" + data.token;
         window.location.replace(queryString.split('=')[1]);
       },
       error : function(request,error)
