@@ -68,7 +68,6 @@ $(document).ready(function() {
       dataType:'json',
       success : function(data) {
         console.log('Data token: ' + data.token);
-        document.cookie = "token=" + data.token;
         window.location.replace(queryString.split('=')[1]);
       },
       error : function(request,error)
