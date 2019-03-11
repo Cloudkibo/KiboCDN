@@ -89,8 +89,8 @@ exports.logic = function (req, res) {
 
         // setting up the cache policy
         if (req.url === '/public/bundle.js' || req.url === '/public/bundle_staging.js') {
-          // set cache duration for 2 hours, and revalidate from server about expiry
-          res.setHeader('Cache-Control', 'max-age=7200, must-revalidate')
+          // set cache duration for 1 minute, and revalidate from server about expiry
+          res.setHeader('Cache-Control', 'max-age=60, must-revalidate')
         } else {
           res.setHeader('Cache-Control', 'max-age=31536000, must-revalidate')
         }
