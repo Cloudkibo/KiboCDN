@@ -60,7 +60,8 @@ exports.logic = function (req, res) {
       return
     }
     // if is a directory, then look for index.html
-    if (fs.statSync(pathname).isDirectory()) {
+    let stats = fs.statSync(pathname)
+    if (stats.isDirectory()) {
       // pathname += '/index.html'
       res.statusCode = 404
       res.end(`Please provide file name as well.`)
@@ -87,14 +88,16 @@ exports.logic = function (req, res) {
           }
         }
 
-        // setting up the cache policy
+        // setting up the cache policy and sending the actual file
         if (req.url === '/public/bundle.js' || req.url === '/public/bundle_staging.js') {
           // set cache duration for 1 minute, and revalidate from server about expiry
           res.setHeader('Cache-Control', 'max-age=60, must-revalidate')
         } else {
           res.setHeader('Cache-Control', 'max-age=31536000, must-revalidate')
         }
-        res.end(data)
+        res.setHeader('Content-Length', stats.size)
+        res.write(data)
+        res.end()
       }
     })
   })
