@@ -96,8 +96,7 @@ exports.logic = function (req, res) {
           res.setHeader('Cache-Control', 'max-age=31536000, must-revalidate')
         }
         res.setHeader('Content-Length', stats.size)
-        res.write(data)
-        res.end()
+        res.end(data)
       }
     })
   })
