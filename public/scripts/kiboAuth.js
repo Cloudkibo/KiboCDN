@@ -28,9 +28,9 @@ function readCookie(name) {
 
 function redirectToLoginAccounts() {
   const environment = readCookie('environment')
-  const url_production = readCookie('url_production')
-  const url_staging = readCookie('url_staging')
-  const url_development = readCookie('url_development')
+  const url_production = readCookie('url_production') || window.__url_production
+  const url_staging = readCookie('url_staging') || window.__url_staging
+  const url_development = readCookie('url_development') || window.__url_development
   if (environment === 'development') window.location.replace('http://localhost:3024/?continue=' + url_development)
   if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/?continue=' + url_staging)
   if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/?continue=' + url_production)
