@@ -93,7 +93,8 @@ exports.logic = function (req, res) {
           // set cache duration for 1 minute, and revalidate from server about expiry
           res.setHeader('Cache-Control', 'max-age=60, must-revalidate')
         } else {
-          res.setHeader('Cache-Control', 'max-age=31536000, must-revalidate')
+          // set cache duration for 1 hour, and revalidate from server about expiry
+          res.setHeader('Cache-Control', 'max-age=3600, must-revalidate')
         }
         res.setHeader('Content-Length', stats.size)
         res.write(data)
