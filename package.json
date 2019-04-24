@@ -27,6 +27,7 @@
   "dependencies": {
     "etag": "^1.8.1",
     "formidable": "^1.2.1",
+    "rimraf": "^2.6.3",
     "uglifycss": "0.0.29"
   }
 }

@@ -43,6 +43,8 @@ public/bundle.js
 public/bundle.js.map
 public/bundle_staging.js
 public/dist/
+static/js
+static/js2
 server/api/backdoor/my-file.csv
 
 # Typescript v1 declaration files
@@ -68,9 +70,6 @@ typings/
 
 # ides
 .idea/
-
-# compiled latest bundle.js
-public/bundle.js
 
 # .DS_Store file often screated by Mac OS
 .DS_Store

@@ -1,7 +1,6 @@
 const url = require('url')
 const fs = require('fs')
 const path = require('path')
-const formidable = require('formidable');
 const etag = require('etag')
 
 // maps file extention to MIME types
@@ -39,16 +38,18 @@ exports.logic = function (req, res) {
 
   // Upload bundle.js logic
   if (req.url === '/fileupload' && req.method.toLowerCase() === 'post') {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      var oldpath = files.bundle.path;
-      var newpath = __dirname + '/public/' + files.bundle.name;
-      fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-        res.write('File uploaded and moved!');
-        res.end();
-      });
-    });
+    require('./util').upload(req, res)
+    return ;
+  }
+
+  // Upload split bundle.js logic
+  if (req.url === '/uploadSplitBundle' && req.method.toLowerCase() === 'post') {
+    require('./util').uploadSplitBundle(req, res)
+    return ;
+  }
+
+  if (req.url === '/completedBundleUpload' && req.method.toLowerCase() === 'post') {
+    require('./util').completedBundleUpload(req, res)
     return ;
   }
 
