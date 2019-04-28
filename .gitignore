@@ -45,6 +45,8 @@ public/bundle_staging.js
 public/dist/
 static/js
 static/js2
+staging/static/js
+staging/static/js2
 server/api/backdoor/my-file.csv
 
 # Typescript v1 declaration files

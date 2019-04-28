@@ -36,13 +36,13 @@ exports.logic = function (req, res) {
   /* eslint-enable */
   let pathname = path.join(__dirname, sanitizePath)
 
-  // Upload bundle.js logic
+  // Upload bundle.js logic TODO remove this, not used anymore
   if (req.url === '/fileupload' && req.method.toLowerCase() === 'post') {
     require('./util').upload(req, res)
     return ;
   }
 
-  // Upload split bundle.js logic
+  // Upload split bundle.js logic for Production
   if (req.url === '/uploadSplitBundle' && req.method.toLowerCase() === 'post') {
     require('./util').uploadSplitBundle(req, res)
     return ;
@@ -50,6 +50,17 @@ exports.logic = function (req, res) {
 
   if (req.url === '/completedBundleUpload' && req.method.toLowerCase() === 'post') {
     require('./util').completedBundleUpload(req, res)
+    return ;
+  }
+
+  // Upload split bundle.js logic for Staging
+  if (req.url === '/uploadSplitBundleStaging' && req.method.toLowerCase() === 'post') {
+    require('./util').uploadSplitBundleStaging(req, res)
+    return ;
+  }
+
+  if (req.url === '/completedBundleUploadStaging' && req.method.toLowerCase() === 'post') {
+    require('./util').completedBundleUploadStaging(req, res)
     return ;
   }
 
