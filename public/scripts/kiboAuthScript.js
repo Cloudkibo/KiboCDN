@@ -27,7 +27,7 @@ function readCookie(name) {
 
 
 function redirectToLoginAccounts() {
-  const environment = readCookie('environment')
+  const environment = readCookie('environment') || window.__kibo_environment
   const url_production = readCookie('url_production') || window.__url_production
   const url_staging = readCookie('url_staging') || window.__url_staging
   const url_development = readCookie('url_development') || window.__url_development
