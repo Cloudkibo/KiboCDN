@@ -423,3 +423,10 @@ a.broadcastTabs.active {
 .vertical-line {
   border-left: 1px solid rgba(0,0,0,.1);
 }
+
+.List {
+  overflow-y: scroll;
+  height: 100%;
+  padding: 10%;
+  width: 116%;
+}
