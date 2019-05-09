@@ -425,7 +425,7 @@ a.broadcastTabs.active {
 }
 
 .List {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100%;
   padding: 10%;
   width: 116%;
