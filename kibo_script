@@ -5,4 +5,5 @@ git pull origin master
 npm install
 npm run uglify:css
 forever stop server.js
+forever cleanlogs
 forever start server.js
