@@ -441,3 +441,20 @@ a.broadcastTabs.active {
   box-shadow: 0 0 1px rgba(255, 255, 255, .5);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
+
+.carousel-inner {
+  width: 150%;
+}
+.carousel-inner > .carousel-item.next {
+  -webkit-transform: translate3d(33%, 0, 0);
+  transform: translate3d(-22%, 0, 0);
+}
+.carousel-inner > .carousel-item.prev {
+  -webkit-transform: translate3d(-33%, 0, 0);
+  transform: translate3d(75%, 0, 0);
+}
+.carousel-control.left, 
+.carousel-control.right {
+  background: rgba(255, 255, 255, 0.3);
+  width: 25%;
+}
