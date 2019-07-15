@@ -447,14 +447,23 @@ a.broadcastTabs.active {
 }
 .carousel-inner > .carousel-item.next {
   -webkit-transform: translate3d(33%, 0, 0);
-  transform: translate3d(-22%, 0, 0);
+  transform: translate3d(-20%, 0, 0);
 }
 .carousel-inner > .carousel-item.prev {
   -webkit-transform: translate3d(-33%, 0, 0);
-  transform: translate3d(75%, 0, 0);
+  transform: translate3d(70%, 0, 0);
 }
 .carousel-control.left, 
 .carousel-control.right {
   background: rgba(255, 255, 255, 0.3);
   width: 25%;
+}
+
+
+.carousel-inner-preview > .carousel-item.next {
+  transform: translate3d(-20%, 0, 0);
+}
+
+.carousel-inner-preview > .carousel-item.prev {
+  transform: translate3d(62%, 0, 0);
 }
