@@ -446,11 +446,9 @@ a.broadcastTabs.active {
   width: 150%;
 }
 .carousel-inner > .carousel-item.next {
-  -webkit-transform: translate3d(33%, 0, 0);
   transform: translate3d(-20%, 0, 0);
 }
 .carousel-inner > .carousel-item.prev {
-  -webkit-transform: translate3d(-33%, 0, 0);
   transform: translate3d(70%, 0, 0);
 }
 .carousel-control.left, 
@@ -459,11 +457,10 @@ a.broadcastTabs.active {
   width: 25%;
 }
 
-
-.carousel-inner-preview > .carousel-item.next {
+.carousel-inner-preview > .carousel-item-preview.next {
   transform: translate3d(-20%, 0, 0);
 }
 
-.carousel-inner-preview > .carousel-item.prev {
+.carousel-inner-preview > .carousel-item-preview.prev {
   transform: translate3d(62%, 0, 0);
 }
