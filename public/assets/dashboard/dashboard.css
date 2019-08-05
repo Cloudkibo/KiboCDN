@@ -72,3 +72,8 @@
 .m-accordion .m-accordion__item .m-accordion__item-body .m-accordion__item-content {
   padding: 1.5rem 2rem;
 }
+
+._popover_max_width_400 {
+  max-width: 400px;
+}
+
