@@ -10,14 +10,14 @@ function readCookie(name) {
 }
 
 (function () {
-  console.log("IIFE called.")
+  // console.log("IIFE called.")
   const token = readCookie('token')
-  console.log("token in cookie " + token)
+  // console.log("token in cookie " + token)
   var wa = document.createElement('script')
   wa.type = 'application/javascript'
   wa.async = true
   const environment = readCookie('environment') || window.__kibo_environment
-  console.log("environment found in cookie " + environment)
+  // console.log("environment found in cookie " + environment)
   if (environment === 'development') wa.src = 'http://localhost:3024/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
   if (environment === 'staging') wa.src = 'https://saccounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
   if (environment === 'production') wa.src = 'https://accounts.cloudkibo.com/auth/scripts/jsonp?callback=CloudKiboAuthFunction'
