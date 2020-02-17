@@ -485,6 +485,9 @@ a.broadcastTabs.active {
 .carousel-inner {
   width: 150%;
 }
+.carousel-item {
+  transition: .3s linear;
+}
 .carousel-inner > .carousel-item.next {
   transform: translate3d(-20%, 0, 0);
 }
