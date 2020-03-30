@@ -15,9 +15,9 @@ let options = {
 if (env === 'production') {
   try {
     options = {
-      ca: fs.readFileSync('/root/certs/kibocdn.ca-bundle'),
-      key: fs.readFileSync('/root/certs/kibocdn.key'),
-      cert: fs.readFileSync('/root/certs/kibocdn.crt')
+     //  ca: fs.readFileSync('/root/cloudkibo.com/gd_bundle-g2-g1.crt'),
+      key: fs.readFileSync('/root/certs/domain.key'),
+      cert: fs.readFileSync('/root/certs/chained.pem')
     }
   } catch (e) {
     // stub add code here for logger
