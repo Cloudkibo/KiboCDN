@@ -84,6 +84,7 @@ $(document).ready(function() {
       data : payload,
       dataType:'json',
       success : function(data) {
+        fbq('track', 'CompleteRegistration') // facebook pixel event on sign up
         console.log('Data: '+data);
         window.location.replace(queryString.split('=')[1]);
       },
