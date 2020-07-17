@@ -27,13 +27,11 @@ function readCookie(name) {
 
 
 function redirectToLoginAccounts() {
+  const url = window.location.href
   const environment = readCookie('environment') || window.__kibo_environment
-  const url_production = readCookie('url_production') || window.__url_production
-  const url_staging = readCookie('url_staging') || window.__url_staging
-  const url_development = window.__url_development || readCookie('url_development')
-  if (environment === 'development') window.location.replace('http://localhost:3024/?continue=' + url_development)
-  if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/?continue=' + url_staging)
-  if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/?continue=' + url_production)
+  if (environment === 'development') window.location.replace('http://localhost:3024/?continue=' + url)
+  if (environment === 'staging') window.location.replace('https://saccounts.cloudkibo.com/?continue=' + url)
+  if (environment === 'production') window.location.replace('https://accounts.cloudkibo.com/?continue=' + url)
 }
 
 // eslint-disable-next-line
