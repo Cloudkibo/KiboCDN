@@ -14,6 +14,7 @@ $(document).ready(function() {
     var email = $("#email").val()
     var password = $("#password").val()
     var domain = $("#domain").val()
+    let enteringOTP = false;
 
     let payload = {}
 
@@ -57,6 +58,13 @@ $(document).ready(function() {
         return document.getElementById(
           "alertMsg").innerHTML = "Length of password should be greater than 6 "
       }
+      if (enteringOTP) {
+        let otp = $("#otp").val();
+        if (otp === '') {
+          return document.getElementById("alertMsg").innerHTML = "Please enter the OTP that you have received."
+        }
+        payload.otp = otp
+      }
       payload.email = email
       payload.password = password
     }
@@ -67,6 +75,13 @@ $(document).ready(function() {
       data : payload,
       dataType:'json',
       success : function(data) {
+        if (data.message) {
+          let otpPanel = document.getElementById('otpPanel');
+          otpPanel.style.display = "block";
+          otpPanel.style.visibility = "visible";
+          enteringOTP = true;
+          return ;
+        }
         console.log('Data token: ' + data.token);
         window.location.replace(queryString.split('=')[1]);
       },
