@@ -122,7 +122,7 @@
         "application/x-www-form-urlencoded"
       );
       xmlhttp.send("company_id=" + window.__kibo_company_id);
-    }, 1000)
+    }, 2500)
   }
   FB.Event.subscribe('customerchat.load', addSubscriberInfo)
   FB.Event.subscribe('customerchat.show', addSubscriberInfo)
