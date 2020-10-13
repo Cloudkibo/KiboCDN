@@ -3,7 +3,7 @@
  */
 
 (function() {
-  FB.Event.subscribe('customerchat.load', function() {
+  function addSubscriberInfo() {
     setTimeout(function(){
       var WebRTCBrowser = true;
       if (navigator.mozGetUserMedia && window.mozRTCPeerConnection)
@@ -122,6 +122,9 @@
         "application/x-www-form-urlencoded"
       );
       xmlhttp.send("company_id=" + window.__kibo_company_id);
-    }, 2000)
-  })
+    }, 1000)
+  }
+  FB.Event.subscribe('customerchat.load', addSubscriberInfo)
+  FB.Event.subscribe('customerchat.show', addSubscriberInfo)
+  FB.Event.subscribe('customerchat.dialogShow', addSubscriberInfo)
 })();
