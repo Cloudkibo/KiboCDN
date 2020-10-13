@@ -3,9 +3,8 @@
  */
 
 (function() {
-  setTimeout(function() {
-    FB.Event.subscribe("customerchat.dialogShow", function() {
-
+  FB.Event.subscribe('customerchat.load', function() {
+    setTimeout(function(){
       var WebRTCBrowser = true;
       if (navigator.mozGetUserMedia && window.mozRTCPeerConnection)
         WebRTCBrowser = true;
@@ -109,6 +108,7 @@
 
           infoPayload.location = myRes.payload;
 
+          console.log('this is response from kibo server', infoPayload)
           FB.CustomerChat.update({
             ref: JSON.stringify(infoPayload)
           });
@@ -122,6 +122,6 @@
         "application/x-www-form-urlencoded"
       );
       xmlhttp.send("company_id=" + window.__kibo_company_id);
-    });
-  }, 2000);
+    }, 2000)
+  })
 })();
