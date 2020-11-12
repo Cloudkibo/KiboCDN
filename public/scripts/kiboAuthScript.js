@@ -9,6 +9,10 @@ function readCookie(name) {
   return null;
 }
 
+function deleteCookie(name) {
+  document.cookie = name + '= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'
+}
+
 (function () {
   // console.log("IIFE called.")
   const token = readCookie('token')
@@ -38,8 +42,10 @@ function redirectToLoginAccounts() {
 function CloudKiboAuthFunction(token) {
   console.log("token came from accounts server " + token)
   if (window.location.pathname !== '/demoSSA') {
-    if (token === 'undefined') redirectToLoginAccounts()
-    else {
+    if (token === 'undefined') {
+      deleteCookie('token')
+      redirectToLoginAccounts()
+    } else {
       document.cookie = "token=" + token;
       // const environment = readCookie('environment')
       // if (environment === 'development') window.location.replace(window.__url_development)
