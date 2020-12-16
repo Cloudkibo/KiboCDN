@@ -1,0 +1,84 @@
+.datepicker {
+  position: absolute;
+  /* -webkit-touch-callout: none; */
+  /* -webkit-user-select: none; */
+  /* -khtml-user-select: none; */
+  /* -moz-user-select: none; */
+  /* -ms-user-select: none; */
+  user-select: none;
+
+  width: 250px;
+  height: 250px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 0 16px -8px black;
+  border: 2px solid dodgerblue;
+  color: #404040;
+  font: 16px Tahoma;
+}
+
+/* ========= Head ======== */
+.datepicker .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+}
+
+.datepicker .head span {
+  margin: 2px;
+  padding: 4px 8px;
+}
+
+.datepicker .head span:not(.disabled) {
+  cursor: pointer;
+}
+
+/* ======== Table ========= */
+.datepicker table {
+  width: 100%;
+  height: calc(100% - 32px);
+}
+
+.datepicker td:not(.disabled) {
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+/* ======== Colors i guess ======== */
+.datepicker .disabled {
+  color: lightgray;
+}
+
+.datepicker .today {
+  color: dodgerblue;
+}
+
+.datepicker td:not(.disabled):hover {
+  background-color: dodgerblue;
+  color: white;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+#submitBtn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+input[type=text] {
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+}

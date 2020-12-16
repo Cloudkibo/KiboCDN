@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KiboPush Datepicker</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Datepicker.css -->
+    <link rel="stylesheet" href="datepicker.css" />
+
+    <!-- Datepicker.js -->
+    <script src="datepicker.js"></script>
+  </head>
+  <body style="text-align: center;">
+    <script>
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'Messenger'));
+    </script>
+    <input
+      type="text"
+      id="date-input"
+      onchange="console.log(d.getDate())"
+      autocomplete="off"
+    />
+    <br/>
+    <button
+      type="submit"
+      id="submitBtn"
+    >
+      Submit Date
+    </button>
+
+    <!-- Datepicker initialization -->
+    <script>
+      let selectedDate = new Date()
+      const d = new Datepicker(document.getElementById("date-input"), {
+        last_date: new Date(2090, 06, 21),
+        // enabled_days: (d) => {
+        //   return d.getDay() > 0 && d.getDay() < 6;
+        // },
+        format: (d) => {
+          selectedDate = d
+          return MONTHS_SHORT[d.getMonth()] + " " + d.getDate() + ", "+ d.getFullYear();
+        },
+      });
+      
+      const submitBtn = document.getElementById('submitBtn')
+      let subscriberId;
+      
+      submitBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log('Here is the date selected', selectedDate)
+        
+        let tempDate = new Date(selectedDate);
+        
+        selectedDate = tempDate.getDate() + '-' + (tempDate.getMonth() + 1) + '-' + tempDate.getFullYear()
+        
+        let payload = {
+          selectedDate: selectedDate,
+          subscriberId: subscriberId
+        }
+        $.post('https://zircon-spatula.glitch.me/webviewPost', payload, function (data, status) {
+          console.log(`this is data: ${data} and this is status: ${status}`)
+          MessengerExtensions.requestCloseBrowser(function success() {
+
+          }, function error(err) {
+            console.log(err)
+          });
+        })
+      })
+      
+      window.extAsyncInit = function() {
+        // the Messenger Extensions JS SDK is done loading 
+        console.log('the Messenger Extensions JS SDK is done loading')
+        MessengerExtensions.getContext('315994759013918', // this is demossa app on our developer account
+          function success(thread_context){
+            // success
+            console.log(thread_context)
+            subscriberId = thread_context.psid
+          },
+          function error(err){
+            console.log(err)
+            // error
+          }
+        );
+      };
+    </script>
+  </body>
+</html>
