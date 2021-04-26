@@ -1,7 +1,7 @@
 /**
  * Created by sojharo on 08/01/2018.
  */
-var queryString = window.location.href.split('?')[1]
+var path = window.location.href
 var environment = window.location.href.split('.')[0].split('//')[1] === 'saccounts' ? 'staging' : 'production';
 var tokenCookie = readCookie("token")
 function validateEmail(email) {
@@ -70,7 +70,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-      url : '/auth/local?' + queryString,
+      url : '/auth/local?' + path,
       type : 'POST',
       data : payload,
       dataType:'json',
@@ -81,7 +81,7 @@ $(document).ready(function() {
           return ;
         }
         console.log('Data token: ' + data.token);
-        let temp = queryString.split('=')
+        let temp = path.split('=')
         let url = ''
         if (temp.length > 2) {
           temp.splice(0, 1)
