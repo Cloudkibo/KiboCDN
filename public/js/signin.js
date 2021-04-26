@@ -81,7 +81,15 @@ $(document).ready(function() {
           return ;
         }
         console.log('Data token: ' + data.token);
-        window.location.replace(queryString.split('=')[1]);
+        let temp = queryString.split('=')
+        let url = ''
+        if (temp.length > 2) {
+          temp.splice(0, 1)
+          url = temp.join('=')
+        } else {
+          url = temp[1]
+        }
+        window.location.replace(url);
       },
       error : function(request,error)
       {
